@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Veterinaria.Web.Controllers
 {
     public class PrincipalController : Controller
@@ -11,6 +12,7 @@ namespace Veterinaria.Web.Controllers
         // GET: Principal
         public ActionResult Index()
         {
+
             return View();
         }
 
