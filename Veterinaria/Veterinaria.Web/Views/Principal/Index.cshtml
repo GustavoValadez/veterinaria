@@ -1,17 +1,117 @@
-﻿
+﻿@Styles.Render("~/Content/Site.css")
+
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="row col-12">
-    <div class="card bg-dark text-white">
-        <img src="..." class="card-img" alt="...">
-        <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text">Last updated 3 mins ago</p>
+
+
+<div>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="~/Content/img/dogs02-various.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/Content/img/dogs03-sunshine.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/Content/img/cats01-gray.jpg" alt="Third slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<hr />
+
+<div class="card text-center border-success">
+    <div class="card-header bg-success text-white">
+        MedVet
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">¡Visítanos!</h5>
+        <p class="card-text">
+            ¡Somos la única veterinaria que ofrece terapia #láser!
+            Sirve para el tratamiento de heridas infectadas acelerando el proceso de curación, desinflama y alivia el dolor, proporcionando una recuperación más rápida. 🐱🐶
+            Multi Radiance Medical #recuperación #laserteraphy #vet #veterinary #últimoentecnología #animales #animals #petcare #petlover #vetijuana
+        </p>
+        <a href="@Url.Action("Contact","Home")" class="btn btn-outline-success">¡Contáctanos!</a>
+    </div>
+    <div class="card-footer bg-success text-white">
+        MedVet
+    </div>
+</div>
+
+<hr />
+
+<div class="row justify-content-center m-4 text-center">
+    <div class="col-md-4">
+        <div class="card mb-4 border-success h-100">
+            <div class="card-header bg-success">
+                <h5 class="text-white">ATENCIONES</h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    Fracturas       <br />
+                    Envenenamiento  <br />
+                    Convulsiones    <br />
+                    Vómitos         <br />
+                    Diarreas        <br />
+                    Sangrado        <br />
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 border-success h-100">
+            <div class="card-header bg-success">
+                <h5 class="text-white">HORARIO DE ATENCIÓN</h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    <b>L - J</b><br />
+                    9:00 - 17:00 <br />
+                    <b>V - S</b><br />
+                    9:00 - 15:00 <br />
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 border-success h-100">
+            <div class="card-header bg-success">
+                <h5 class="text-white">SERVICIOS</h5>
+            </div>
+            <div class="card-body">
+                <p>
+                    Consulta Médica Veterinaria     <br />
+                    Medicina Preventiva             <br />
+                    Laboratorio Clínico             <br />
+                    Rayos X                         <br />
+                    Ultrasonido                     <br />
+                    Farmacia Veterinaria            <br />
+                </p>
+            </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 
