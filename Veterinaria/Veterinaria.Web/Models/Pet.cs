@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -46,6 +47,9 @@ namespace Veterinaria.Web.Models
         [Display(Name = "Imagen")]
         public string ImgUrl { get; set; }
 
+        [Display(Name = "Dueño")]
+        public int OwnerId { get; set; }
+        [ForeignKey("OwnerId")]
 
         public Owner Owner { get; set; }
 

@@ -19,6 +19,7 @@ namespace Veterinaria.Web.Models
 
         //Porque existe una relacion de 1 a * se recomienda poner un ICollection
         public ICollection<Consult> Consults { get; set; }
+
         public ApplicationUser ApplicationUser { get; set; }
 
     }
