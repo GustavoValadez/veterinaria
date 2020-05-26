@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="@Url.Action("Index","Principal")">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="@Url.Action("Index","Principal")">Inicio @*<span class="sr-only">(current)</span>*@ </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("About","Home")">Acerca</a>
@@ -27,11 +27,52 @@
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Contact","Home")">Contacto</a>
                 </li>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Index","Users")">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Index","Veterinary")">Médico</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Veterinary") || User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Index","Consults")">Consultas</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Owner"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Index","Pets")">Mascotas</a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("AllPets","Pets")">Mascotas</a>
+                    </li>
+                }
+
+               
+
+
             </ul>
+
+
             <span class="navbar-text">
+                @Html.Partial("_LoginPartial")
+            </span>
+
+            @*<span class="navbar-text">
                 <a href="@Url.Action("Register","Account")">Registro</a>
                 <a href="@Url.Action("Login","Account")">Iniciar Sesión</a>
-            </span>
+            </span>*@
         </div>
     </nav>
 

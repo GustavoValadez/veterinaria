@@ -43,7 +43,10 @@ namespace Veterinaria.Web.Models
         [Display(Name = "Altura")]
         public decimal Height { get; set; }
 
-        
+        [Display(Name = "Imagen")]
+        public string ImgUrl { get; set; }
+
+
         public Owner Owner { get; set; }
 
         //Porque existe una relacion de 1 a * se recomienda poner un ICollection

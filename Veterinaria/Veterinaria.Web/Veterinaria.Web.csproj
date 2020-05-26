@@ -193,6 +193,10 @@
     <Compile Include="Migrations\202005201000527_UpdateDb.Designer.cs">
       <DependentUpon>202005201000527_UpdateDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005261407136_UpdatePets.cs" />
+    <Compile Include="Migrations\202005261407136_UpdatePets.Designer.cs">
+      <DependentUpon>202005261407136_UpdatePets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Consult.cs" />
@@ -2102,6 +2106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005201000527_UpdateDb.resx">
       <DependentUpon>202005201000527_UpdateDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005261407136_UpdatePets.resx">
+      <DependentUpon>202005261407136_UpdatePets.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
