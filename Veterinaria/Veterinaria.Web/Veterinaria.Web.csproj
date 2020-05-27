@@ -1863,6 +1863,7 @@
     <Content Include="Content\img\dogs01-rottweiler.jpg" />
     <Content Include="Content\img\dogs02-various.jpg" />
     <Content Include="Content\img\dogs03-sunshine.jpg" />
+    <Content Include="Content\img\user-unknown.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
