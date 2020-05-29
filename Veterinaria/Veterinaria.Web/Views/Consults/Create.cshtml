@@ -17,7 +17,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ConsultDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ConsultDate, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.ConsultDate, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input type="date" name="ConsultDate" value="" class="form-control" />
                 @Html.ValidationMessageFor(model => model.ConsultDate, "", new { @class = "text-danger" })
             </div>
         </div>

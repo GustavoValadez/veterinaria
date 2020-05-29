@@ -58,6 +58,6 @@ namespace Veterinaria.Web.Models
         public DbSet<History> Histories { get; set; }
         public DbSet<Manager> Managers { get; set; }
 
-
+        
     }
 }
