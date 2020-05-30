@@ -30,7 +30,7 @@ namespace Veterinaria.Web.Controllers
             var user = User.Identity.GetUserId();
             var ow = db.Owners.Where(o => o.UserId == user).FirstOrDefault();
             var pets = db.Pets.Include(u => u.Owner).Where(p => p.OwnerId == ow.Id).ToList();
-
+            
 
 
             return View(pets);
@@ -66,6 +66,17 @@ namespace Veterinaria.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                ////////////////////////////////////////////////////////////////
+                // Para poder agregar la imagen al perfl de cada mascota
+                if (hpb != null)
+                {
+                    var perfil = System.IO.Path.GetFileName(hpb.FileName);
+                    var direccion = "~/Content/img/" + pet.Name + "_" + perfil;
+                    hpb.SaveAs(Server.MapPath(direccion));
+                    pet.ImgUrl = pet.Name + "_" + perfil;
+                }
+                ///////////////////////////////////////////////////////////////
+                
                 // Esto solo funciona si esta autenticado
                 var userId = User.Identity.GetUserId();
                 // Esto funciona para traer el Usuario de la Base de Datos.
@@ -101,15 +112,59 @@ namespace Veterinaria.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,PetType,Age,BirthDate,Color,Race,Weight,Height")] Pet pet)
+        public ActionResult Edit(Pet pet, HttpPostedFileBase hpb)
         {
+            /////////////////////////////////////////////////////////////////////////////////////////
+            ///////////// Esto aparecia antes de modificar para editar imagen de perfil /////////////
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(pet).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //return View(pet);
+            ////////////////////////////////////////////////////////////////////////////////////////
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+            //////////// Esto se lo agregue parecido al Create /////////////////////////////////////
+
+
+
+
             if (ModelState.IsValid)
             {
+                ////////////////////////////////////////////////////////////////
+                // Para poder agregar la imagen al perfl de cada mascota
+                if (hpb != null)
+                {
+                    var perfil = System.IO.Path.GetFileName(hpb.FileName);
+                    var direccion = "~/Content/img/" + pet.Name + "_" + perfil;
+                    hpb.SaveAs(Server.MapPath(direccion));
+                    pet.ImgUrl = pet.Name + "_" + perfil;
+                }
+                ///////////////////////////////////////////////////////////////
+                // Esto solo funciona si esta autenticado
+                var userId = User.Identity.GetUserId();
+                // Esto funciona para traer el Usuario de la Base de Datos.
+                var own = db.Owners.Where(o => o.UserId == userId).FirstOrDefault();
+                // Agregamos el Id del Own que buscamos
+                pet.OwnerId = own.Id;
+
+
+
+
+
+
+
+
+
+
                 db.Entry(pet).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(pet);
+
         }
 
         // GET: Pets/Delete/5

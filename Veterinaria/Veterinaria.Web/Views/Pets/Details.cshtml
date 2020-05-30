@@ -1,14 +1,14 @@
 ﻿@model Veterinaria.Web.Models.Pet
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
 <div class="row">
     <div class="col-md-12">
-       
+
     </div>
-    
+
 </div>
 
 <div class="row col-md=12 justify-content-center">
@@ -21,35 +21,35 @@
                 <table class="table-sm">
 
                     <tr>
-                        <td>Nombre:</td>
+                        <td><b>Nombre:</b></td>
                         <td>@Model.Name</td>
                     </tr>
                     <tr>
-                        <td>Tipo de Mascota:</td>
+                        <td><b>Tipo de Mascota:</b></td>
                         <td>@Model.PetType</td>
                     </tr>
                     <tr>
-                        <td>Edad:</td>
+                        <td><b>Edad:</b></td>
                         <td>@Model.Age Meses</td>
                     </tr>
                     <tr>
-                        <td>Fecha de Nacimiento:</td>
+                        <td><b>Fecha de Nacimiento:</b></td>
                         <td>@Model.BirthDate.ToShortDateString()</td>
                     </tr>
                     <tr>
-                        <td>Color:</td>
+                        <td><b>Color:</b></td>
                         <td>@Model.Color</td>
                     </tr>
                     <tr>
-                        <td>Raza:</td>
+                        <td><b>Raza:</b></td>
                         <td>@Model.Race</td>
                     </tr>
                     <tr>
-                        <td>Peso:</td>
+                        <td><b>Peso:</b></td>
                         <td>@Model.Weight</td>
                     </tr>
                     <tr>
-                        <td>Altura:</td>
+                        <td><b>Altura:</b></td>
                         <td>@Model.Height</td>
                     </tr>
 
@@ -66,20 +66,29 @@
                 <div class="card-header">
                     @if (Model.ImgUrl == null)
                     {
-                    <img src="~/Content/img/user-unknown.jpg" class="img-thumbnail" width="550"/>
+                        <img src="~/Content/img/user-unknown.jpg" class="img-thumbnail" width="550" />
                     }
-                    else if (Model.ImgUrl != null) {
-                        < img src = "~/Content/img/@Model.ImgUrl" />
+                    else if (Model.ImgUrl != null)
+                    {
+                        <img src="~/Content/img/@Model.ImgUrl" class="img-thumbnail" width="550" />
                     }
                 </div>
             </div>
         </div>
     </div>
 </div>
-    
-  
-    
+
+
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |*@
+    @*@Html.ActionLink("Regresar", "Index")*@
+
+    <a href="@Url.Action("Edit","Pets", new { id = Model.Id })" class="btn btn-success">Editar</a>
+    <a href="@Url.Action("Index","Pets")" class="btn btn-outline-success">Regresar</a>
 </p>
+
+
+
+
+

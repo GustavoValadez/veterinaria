@@ -1853,6 +1853,9 @@
     <Content Include="Content\fontawesome-free-5.13.0-web\webfonts\fa-brands-400.svg" />
     <Content Include="Content\fontawesome-free-5.13.0-web\webfonts\fa-regular-400.svg" />
     <Content Include="Content\fontawesome-free-5.13.0-web\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\img\banner01.jpg" />
+    <Content Include="Content\img\banner02.jpg" />
+    <Content Include="Content\img\banner03.jpg" />
     <Content Include="Content\img\birds01-cacatua.jpg" />
     <Content Include="Content\img\cat01-gray.jpg" />
     <Content Include="Content\img\cats01-gray.jpg" />

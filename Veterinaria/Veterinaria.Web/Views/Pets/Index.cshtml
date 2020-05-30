@@ -63,7 +63,7 @@
                 <h6 class="text-center text-white">Nueva Mascota</h6>
             </div>
             <div class="modal-body">
-                <form action="@Url.Action("Create","Pets")" method="post">
+                <form action="@Url.Action("Create","Pets")" method="post" enctype="multipart/form-data">
 
                     @Html.AntiForgeryToken()
 
@@ -71,7 +71,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <label class="col-md-2">Nombre</label>
+                                <label class="col-md-2"><b>Nombre</b></label>
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })*@
@@ -82,7 +82,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.PetType, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <label class="col-md-6">Tipo de Mascota</label>
+                                <label class="col-md-6"><b>Tipo de Mascota</b></label>
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.PetType, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.PetType, "", new { @class = "text-danger" })*@
@@ -96,7 +96,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <label class="col-md-2">Edad</label>
+                                <label class="col-md-2"><b>Edad</b></label>
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })*@
@@ -107,7 +107,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <label class="col-md-6">Fecha de Nacimiento</label>
+                                <label class="col-md-10"><b>Fecha de Nacimiento</b></label>
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })*@
                                     <input type="date" name="BirthDate" value="" class="form-control" />
@@ -122,7 +122,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <label class="col-md-2">Color</label>
+                                <label class="col-md-2"><b>Color</b></label>
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })*@
@@ -133,7 +133,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.Race, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <label class="col-md-2">Raza</label>
+                                <label class="col-md-2"><b>Raza</b></label>
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.Race, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Race, "", new { @class = "text-danger" })*@
@@ -147,7 +147,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <label class="col-md-2">Peso</label>
+                                <label class="col-md-2"><b>Peso</b></label>
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })*@
@@ -158,7 +158,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 @*@Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                <label class="col-md-2">Altura</label>
+                                <label class="col-md-2"><b>Altura</b></label>
                                 <div class="col-md-10">
                                     @*@Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })*@
@@ -170,12 +170,12 @@
 
 
                     <div class="form-group">
-                        <label class="control-label col-md-2">Fotografía</label>
+                        <label class="control-label col-md-2"><b>Fotografía</b></label>
                         <div class="col-md-10">
                             <input type="file" name="hpb" value="" class="form-control" />
                         </div>
                     </div>
-
+                    
                     <div class="col-md-10">
                         <button class="btn btn-sm btn-primary" type="submit">Guardar</button>
                     </div>
