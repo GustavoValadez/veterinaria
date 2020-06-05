@@ -74,13 +74,13 @@
 
                                     <dd>
                                         @*@Html.DisplayFor(model => model.ImgUrl)*@
-                                        <img src="~/Content/img/@Model.ImgUrl" />
+                                        <img src="~/Content/img/@Model.ImgUrl" style="height:400px; width:400px"/>
                                     </dd>
 
                                 </dl>
                             </div>
                             <p>
-                                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+                                @*@Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |*@
                                 @Html.ActionLink("Volver", "Index")
                             </p>
 
