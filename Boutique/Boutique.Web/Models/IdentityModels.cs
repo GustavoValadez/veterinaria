@@ -53,5 +53,7 @@ namespace Boutique.Web.Models
         public DbSet<Article> Articles { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Manager> Managers { get; set; }
+
+       
     }
 }
