@@ -1,7 +1,40 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+
+<body style="background-color:antiquewhite">
+    <div class="row" style="margin-top:30px">
+        <div class="col-md-12">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="card text-white bg-dark mb-3" style="max-width: 40rem;  margin:0 auto">
+                        <h4 style="font-weight: bolder; text-align:center; margin-bottom:-5px">Contacto.</h4>
+                        <hr />
+                        <div class="card-body text-black-50" style="background-color: white; font-weight:bold; padding-left:35px">
+
+                            <h5 class="text-center font-italic font-weight-light text-dark" >
+                                Hola, bienvenidos a nuestra boutique, aqui encontarás una variedad de ropa y accesorios para la mujer actual. <br />
+                                Tenemos una gran variedad de atuendos para toda ocación. <br />
+                                Nuestra meta es poder ofrecerle a nuestros clientes ropa de la mejor calidad a un gran precio. <br />
+                                Sin importar cuál es tu estilo aqui siempre vas a encontrar lo necesario para lucir como tú, autentica. <br />
+                                Te esperamos.
+                            </h5>
+
+                            
+
+                        </div>
+                    </div>
+                }
+
+            </section>
+        </div>
+    </div>
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

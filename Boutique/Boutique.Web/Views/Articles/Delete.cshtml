@@ -4,69 +4,97 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Article</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ArticleName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+<body style="background-color:antiquewhite">
+    <div class="row" style="margin-top:30px">
+        <div class="col-md-12">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
+                    <div class="card text-white bg-dark mb-3" style="max-width: 40rem;  margin:0 auto">
+                        <h4 style="font-weight: bolder; text-align:center; margin-bottom:-5px">Contacto.</h4>
+                        <hr />
+                        <div class="card-body text-black-50" style="background-color: white; font-weight:bold; padding-left:35px">
 
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
+                            <h3>¿Seguro de que quiere borrar esta prenda?</h3>
+                            <div>
+                                <h4></h4>
+                                <hr />
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.ArticleName)
+                                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.ArticleName)
+                                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Description)
+                                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImgUrl)
-        </dt>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Color)
+                                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImgUrl)
-        </dd>
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Color)
+                                    </dd>
 
-    </dl>
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Size)
+                                    </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Size)
+                                    </dd>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Price)
+                                    </dd>
+
+                                    @*<dt>
+                                        @Html.DisplayNameFor(model => model.ImgUrl)
+                                    </dt>*@
+
+                                    @*<dd>
+                                        @Html.DisplayFor(model => model.ImgUrl)
+                                    </dd>*@
+
+                                </dl>
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-actions no-color">
+                                        <input type="submit" value="Eliminar" class="btn btn-primary" /> |
+                                        @Html.ActionLink("Volver", "Index")
+                                    </div>
+                                }
+                            </div>
+
+
+                        </div>
+                    </div>
+                }
+
+            </section>
         </div>
-    }
-</div>
+    </div>
+</body>

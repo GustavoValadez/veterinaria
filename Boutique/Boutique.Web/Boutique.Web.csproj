@@ -205,6 +205,10 @@
     <Compile Include="Migrations\202006050124011_ArticlesInOrders.Designer.cs">
       <DependentUpon>202006050124011_ArticlesInOrders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006051158038_UpdateArticle.cs" />
+    <Compile Include="Migrations\202006051158038_UpdateArticle.Designer.cs">
+      <DependentUpon>202006051158038_UpdateArticle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -224,6 +228,31 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\1.jpg" />
+    <Content Include="Content\img\2.jpg" />
+    <Content Include="Content\img\3.jpg" />
+    <Content Include="Content\img\Anonymous.jpg" />
+    <Content Include="Content\img\blusa1.jpeg" />
+    <Content Include="Content\img\blusa2.jpeg" />
+    <Content Include="Content\img\blusa3.JPG" />
+    <Content Include="Content\img\blusa4.jpeg" />
+    <Content Include="Content\img\calzado1.jpeg" />
+    <Content Include="Content\img\calzado2.jpeg" />
+    <Content Include="Content\img\calzado3.JPG" />
+    <Content Include="Content\img\calzado4.jpeg" />
+    <Content Include="Content\img\Cheems.jpg" />
+    <Content Include="Content\img\Fondo.jpg" />
+    <Content Include="Content\img\Fondo2.jpg" />
+    <Content Include="Content\img\IGN.jpg" />
+    <Content Include="Content\img\pantalon1.jpeg" />
+    <Content Include="Content\img\pantalon2.JPG" />
+    <Content Include="Content\img\pantalon3.jpeg" />
+    <Content Include="Content\img\pantalon4.JPG" />
+    <Content Include="Content\img\Presio.jpg" />
+    <Content Include="Content\img\vestido1.jpeg" />
+    <Content Include="Content\img\vestido2.JPG" />
+    <Content Include="Content\img\vestido3.jpeg" />
+    <Content Include="Content\img\vestido4.jpeg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -398,7 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -429,6 +457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006050124011_ArticlesInOrders.resx">
       <DependentUpon>202006050124011_ArticlesInOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006051158038_UpdateArticle.resx">
+      <DependentUpon>202006051158038_UpdateArticle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

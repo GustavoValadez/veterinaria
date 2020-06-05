@@ -38,5 +38,6 @@ namespace Boutique.Web.Models
         public string ImgUrl { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+        public ICollection<Client> Clients { get; set; }
     }
 }

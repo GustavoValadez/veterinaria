@@ -1,17 +1,55 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+
+@using Boutique.Web.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<body style="background-color:antiquewhite">
+    <div class="row" style="margin-top:30px">
+        <div class="col-md-12">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="card text-white bg-dark mb-3" style="max-width: 40rem;  margin:0 auto">
+                        <h4 style="font-weight: bolder; text-align:center; margin-bottom:-5px">Contacto.</h4>
+                        <hr />
+                        <div class="card-body text-black-50" style="background-color: white; font-weight:bold; padding-left:35px">
+
+                            <p class="text-center">
+                                Aqui te damos unas cuantas opciones para que te pongas en contacto con nosotros. Te esperamos. 
+                            </p>
+
+                            <address class="m-4 font-italic" style="font-size: 16px">
+                                <strong>Avenida 20, Colonia 10.</strong><br />
+                                <strong>Tijuana, Baja California.</strong><br />
+                                <strong>México.</strong><br />
+                                <i class="fas fa-phone text-black mr-4 mt-4"></i>111-1111111<br />
+                                <i class="fas fa-mobile-alt text-black mr-4"></i> 222-2222222<br />
+                                <i class="fas fa-envelope text-black mr-4"></i>medvet@email.com<br />
+                                <i class="fab fa-twitter text-black mr-4"></i>Med_Vet<br />
+                                <i class="fab fa-facebook-f text-black mr-4"></i> Med_Vet<br />
+                                <i class="fab fa-instagram text-black mr-4"></i>Med_Vet<br />
+
+
+                            </address>
+                           
+                        </div>
+                    </div>
+                }
+
+            </section>
+        </div>
+    </div>
+</body style="background-color:antiquewhite">
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

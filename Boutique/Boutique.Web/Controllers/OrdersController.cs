@@ -63,6 +63,7 @@ namespace Boutique.Web.Controllers
 
 
             ViewBag.ArticleId = new SelectList(db.Articles, "Id", "ArticleName");
+            
             return View();
         }
 

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Boutique.Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Boutique.Web.Controllers
 {
@@ -50,9 +51,33 @@ namespace Boutique.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                if (hpb != null)
+                {
+                    var perfil = System.IO.Path.GetFileName(hpb.FileName);
+                    var direccion = "~/Content/img/" + article.ArticleName + "_" + perfil;
+                    hpb.SaveAs(Server.MapPath(direccion));
+                    article.ImgUrl = article.ArticleName + "_" + perfil;
+                }
+
+
+
+                //Si esta autenticado un Cliente
+                var userId = User.Identity.GetUserId();
+                //Para Traer el Usuario de la bd.
+                var cli = db.Clients.Where(c => c.UserId == userId).FirstOrDefault();
+                //Agregamos el Id del Own que buscamos
+                //article.ClientId = cli.Id;
+
                 db.Articles.Add(article);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+               
+
+
+                //db.Articles.Add(article);
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
             }
 
             return View(article);
@@ -78,13 +103,37 @@ namespace Boutique.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ArticleName,Description,Color,Size,Price,ImgUrl")] Article article)
+        public ActionResult Edit(Article article, HttpPostedFileBase hpb)
         {
             if (ModelState.IsValid)
             {
+                ////////////////////////////////////////////////////////////////
+                // Para poder agregar la imagen al perfl de cada mascota
+                if (hpb != null)
+                {
+                    var perfil = System.IO.Path.GetFileName(hpb.FileName);
+                    var direccion = "~/Content/img/" + article.ArticleName + "_" + perfil;
+                    hpb.SaveAs(Server.MapPath(direccion));
+                    article.ImgUrl = article.ArticleName + "_" + perfil;
+                }
+                ///////////////////////////////////////////////////////////////
+                // Esto solo funciona si esta autenticado
+                var userId = User.Identity.GetUserId();
+                // Esto funciona para traer el Usuario de la Base de Datos.
+                var cli = db.Clients.Where(o => o.UserId == userId).FirstOrDefault();
+                // Agregamos el Id del Own que buscamos
+                //article.ClientId = cli.Id;
+
+
                 db.Entry(article).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
+
+
+                //db.Entry(article).State = EntityState.Modified;
+                //db.SaveChanges();
+                //return RedirectToAction("Index");
             }
             return View(article);
         }
