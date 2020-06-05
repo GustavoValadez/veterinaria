@@ -32,7 +32,7 @@ namespace Boutique.Web.Controllers
         {
             var user = User.Identity.GetUserId();
             var cl = db.Clients.Where(c => c.UserId == user).FirstOrDefault();
-            var orders = db.Orders.Include(u => u.Client).Where(o => o.ClientId == cl.Id).ToList();
+            var orders = db.Orders.Include(u => u.Client).Where(c => c.ClientId == cl.Id).ToList();
 
 
             return View(orders);
@@ -59,6 +59,9 @@ namespace Boutique.Web.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
+            //return View();
+
+
             ViewBag.ArticleId = new SelectList(db.Articles, "Id", "ArticleName");
             return View();
         }
@@ -109,7 +112,7 @@ namespace Boutique.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ArticleId,Quantity,Total")] Order order)
+        public ActionResult Edit(Order order)
         {
             if (ModelState.IsValid)
             {

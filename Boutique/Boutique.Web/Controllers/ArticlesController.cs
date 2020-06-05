@@ -46,7 +46,7 @@ namespace Boutique.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ArticleName,Description,Color,Size,Price,ImgUrl")] Article article)
+        public ActionResult Create(Article article, HttpPostedFileBase hpb)
         {
             if (ModelState.IsValid)
             {

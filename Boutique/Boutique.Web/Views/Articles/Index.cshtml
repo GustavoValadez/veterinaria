@@ -4,60 +4,228 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ArticleName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImgUrl)
-        </th>
-        <th></th>
-    </tr>
+<h2 class="text-center text-white font-weight-light m-3"><b>Menú</b></h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArticleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImgUrl)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container mb-5">
+        <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".bd-example-modal-lg">
+            <span class="icon text-white-50"> <i class="fas fa-plus"></i> </span>
+            <span class="text">Agregar Prenda</span>
+        </a>
+
+    </div>
+
+
 }
 
-</table>
+
+
+<section>
+    <div class="container">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-3 col-md-3 mb-3">
+
+                    <div class="card h-100">
+                        <img src="@Url.Action("getImage", "Articles", new { id=item.Id})" class="card-img-top" alt="...">
+
+                        <div class="card-body text-center">
+                            <h5 class="card-title"> <b>@item.ArticleName</b> </h5>
+
+                            <a href="@Url.Action("Details","Articles", new { id=item.Id })" class="btn btn-primary btn-icon-split">
+                                <span class="icon text-white-50"> <i class="fas fa-info-circle"></i> </span>
+                                <span class="text">Detalles</span>
+                            </a>
+
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <hr />
+
+                                <a href="@Url.Action("Edit","Articles", new { id=item.Id })" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50"> <i class="fas fa-edit"></i> </span>
+                                    <span class="text">Editar</span>
+                                </a>
+                                <a href="@Url.Action("Delete","Articles", new { id=item.Id })" class="btn btn-primary btn-icon-split">
+                                    <span class="icon text-white-50"> <i class="fas fa-trash-alt"></i> </span>
+                                    <span class="text">Eliminar</span>
+
+
+                                </a>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Large modal -->
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-title bg-dark">
+                <h4 class="text-white font-italic text-center">Nueva Prenda</h4>
+            </div>
+            <div class="modal-body">
+
+                <form action="@Url.Action("Create","Articles")" method="post">
+                    @Html.AntiForgeryToken()
+
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.ArticleName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-md-2">Artículo</label>
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.ArticleName, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ArticleName, "", new { @class = "text-danger" })*@
+                            <input type="text" name="ArticleName" value="" placeholder="Nombre de la prenda"  class="form-control" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-md-2">Descripción</label>
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })*@
+                            <input type="text" name="Description" value="" placeholder="Descripción de la prenda"  class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-md-2">Color</label>
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })*@
+                            <input type="text" name="Color" value="" placeholder="Color de la prenda"  class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-md-2">Tamaño</label>
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })*@
+                            <input type="text" name="Size" value="" placeholder="Tamaño de la prenda"  class="form-control" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-md-2">Precio</label>
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })*@
+                            <input type="number" name="Price" value="" placeholder="0.0"  class="form-control"/>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.ImgUrl, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <label class="col-md-2">Imagen</label>
+                        <div class="col-md-10">
+                            @*@Html.EditorFor(model => model.ImgUrl, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ImgUrl, "", new { @class = "text-danger" })*@
+
+                            <input type="file" name="hpb" value="" class="form-control" />
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-10">
+                        <button class="btn btn-sm btn-primary" type="submit">Guardar</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgUrl)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImgUrl)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>*@
