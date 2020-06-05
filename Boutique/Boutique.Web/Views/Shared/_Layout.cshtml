@@ -45,13 +45,13 @@
                     <a class="nav-link text-white" href="@Url.Action("Index","Articles")">Artículos</a>
                 </li>
 
-                @if (User.IsInRole("Client") || User.IsInRole("Admin"))
+                @*@if (User.IsInRole("Client") || User.IsInRole("Admin"))
                 {
                     <li class="nav-item">
                         <a class="nav-link text-white" href="@Url.Action("Index","Articles")">Artículos</a>
                     </li>
 
-                }
+                }*@
 
                 @if (User.IsInRole("Client"))
                 {
