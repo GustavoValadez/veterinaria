@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - Boutique</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -25,13 +26,84 @@
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Contact","Home")">Contacto</a>
                 </li>
+
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="@Url.Action("Index", "Users")">Usuarios</a>
+                    </li>
+
+                }
+
+                @if (User.IsInRole("Client") || User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="@Url.Action("Index","Articles")">Artículos</a>
+                    </li>
+
+                }
+
+                @if (User.IsInRole("Client"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="@Url.Action("Index", "Orders")">Pedidos</a>
+                    </li>
+
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-black" href="@Url.Action("AllOrders","Orders")">Pedidos</a>
+                    </li>
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </ul>
-            <span class="navbar-text">                
-                    <a href="@Url.Action("Register","Account")">Registro</a>
-                    <a href="@Url.Action("Login","Account")">Iniciar Sesión</a>                
+            @*<span class="navbar-text">
+                <a href="@Url.Action("Register","Account")">Registro</a>
+                <a href="@Url.Action("Login","Account")">Iniciar Sesión</a>
+            </span>*@
+
+            <span class="navbar-text">
+                @Html.Partial("_LoginPartial")
             </span>
+
+
         </div>
     </nav>
+
+
     <div class="">
         @RenderBody()
         <hr />

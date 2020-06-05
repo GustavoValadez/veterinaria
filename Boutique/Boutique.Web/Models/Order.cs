@@ -25,6 +25,9 @@ namespace Boutique.Web.Models
         [Display(Name = "Total a pagar")]
         public decimal Total { get; set; }
 
-       
+        public int ClientId { get; set; }
+        [ForeignKey("ClientId")]
+        public Client Client { get; set; }
+
     }
 }

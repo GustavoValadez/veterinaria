@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Boutique.Web.Clase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,21 @@ namespace Boutique.Web
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            this.CheckRoles();
+            Utilities.CheckSuperUser();
+            Utilities.CheckClientDefault();
+
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        private void CheckRoles()
+        {
+            Utilities.CheckRoles("Admin");
+            Utilities.CheckRoles("Client");
+            
+
+
         }
     }
 }

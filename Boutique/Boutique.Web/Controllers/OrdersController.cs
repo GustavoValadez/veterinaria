@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Boutique.Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Boutique.Web.Controllers
 {
@@ -14,11 +15,30 @@ namespace Boutique.Web.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult AllOrders()
+        {
+            var orders = db.Orders.Include(c=>c.Client.ApplicationUser).Include(a=>a.Article).ToList();
+            //var orders = db.Orders.Include(a=>a.Article.ArticleName).ToList();
+            return View(orders);
+        }
+
+
+
+
+
+
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Article);
-            return View(orders.ToList());
+            var user = User.Identity.GetUserId();
+            var cl = db.Clients.Where(c => c.UserId == user).FirstOrDefault();
+            var orders = db.Orders.Include(u => u.Client).Where(o => o.ClientId == cl.Id).ToList();
+
+
+            return View(orders);
+
+            //var orders = db.Orders.Include(o => o.Article);
+            //return View(orders.ToList());
         }
 
         // GET: Orders/Details/5
@@ -48,16 +68,23 @@ namespace Boutique.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ArticleId,Quantity,Total")] Order order)
+        public ActionResult Create(Order order)
         {
             if (ModelState.IsValid)
             {
+                // Si esta autenticado un Cliente
+                var userId = User.Identity.GetUserId();
+                // Para traer al user de la base de datos
+                var cli = db.Clients.Where(c => c.UserId == userId).FirstOrDefault();
+                // Agregamos el Id del cli que buscamos
+                order.ClientId = cli.Id;
+
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ArticleId = new SelectList(db.Articles, "Id", "ArticleName", order.ArticleId);
+            //ViewBag.ArticleId = new SelectList(db.Articles, "Id", "ArticleName", order.ArticleId);
             return View(order);
         }
 
